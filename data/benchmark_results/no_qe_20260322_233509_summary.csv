@@ -1,0 +1,2 @@
+run_id,retrieval_mode,top_k,rerank,recall_at_k,mrr,ndcg_at_k,mean_retrieval_latency_ms,p95_retrieval_latency_ms
+no_qe_20260322_233509,hybrid,10,0,0.8780487804878049,0.7642276422764228,0.7932614393728251,65.27845827272026,39.06595800071955

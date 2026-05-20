@@ -1,0 +1,2 @@
+run_id,retrieval_mode,top_k,rerank,recall_at_k,mrr,ndcg_at_k,mean_retrieval_latency_ms,p95_retrieval_latency_ms
+current_run_20260322_233352,hybrid,10,0,0.8780487804878049,0.8170731707317073,0.832147968152462,994.6352286809465,1667.8180838935077
