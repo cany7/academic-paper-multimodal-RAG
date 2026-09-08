@@ -347,7 +347,8 @@ class RAGPipeline:
         if verification.corrected_output:
             corrected_payload = answer.model_dump()
             corrected_payload.update(verification.corrected_output)
-            answer = RAGAnswer(**corrected_payload, verification=verification)
+            corrected_payload["verification"] = verification
+            answer = RAGAnswer(**corrected_payload)
         else:
             answer = answer.model_copy(update={"verification": verification})
 

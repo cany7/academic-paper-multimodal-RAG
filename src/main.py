@@ -410,7 +410,7 @@ def benchmark(
         "--query-explanation/--no-query-explanation",
         help="Enable retrieval-oriented query expansion before retrieval",
     ),
-    output_dir: Path = typer.Option(Path("data/benchmark_results/"), "--output-dir", help="Directory for report output"),
+    output_dir: Path = typer.Option(Path("docs/evaluation/retrieval/"), "--output-dir", help="Directory for report output"),
     tag: str = typer.Option("run", "--tag", help="Human-readable tag for this run"),
 ) -> None:
     effective_top_k = _resolve_retrieval_top_k(top_k)

@@ -16,7 +16,7 @@ from src.retrieval.query_explanation import QueryExplanationConfig, RetrievalExe
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATASET_PATH = REPO_ROOT / "data" / "benchmark_QA.csv"
-OUTPUT_CSV_PATH = REPO_ROOT / "tests" / "benchmark_QA_default_query_results.csv"
+OUTPUT_CSV_PATH = REPO_ROOT / "docs" / "evaluation" / "generation" / "rag_answers.csv"
 
 
 def _json_cell(value: Any) -> str:
@@ -111,7 +111,8 @@ def _answer_from_execution(
     if verification.corrected_output:
         corrected_payload = answer.model_dump()
         corrected_payload.update(verification.corrected_output)
-        return RAGAnswer(**corrected_payload, verification=verification)
+        corrected_payload["verification"] = verification
+        return RAGAnswer(**corrected_payload)
     return answer.model_copy(update={"verification": verification})
 
 

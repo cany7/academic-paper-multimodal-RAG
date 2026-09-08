@@ -1,9 +1,9 @@
-[🇺🇸 English](./README.md) | [🇨🇳 简体中文](./README_ZH.md)
+[🇺🇸 English](../README.md) | [🇨🇳 简体中文](README_ZH.md)
 
 # LumiCite
 
-[![Python](https://img.shields.io/badge/Python-3.11%2B-blue)](./pyproject.toml)
-[![License](https://img.shields.io/badge/License-AGPL--3.0-green)](./LICENSE)
+[![Python](https://img.shields.io/badge/Python-3.11%2B-blue)](../pyproject.toml)
+[![License](https://img.shields.io/badge/License-AGPL--3.0-green)](../LICENSE)
 [![CI](https://github.com/cany7/LumiCite/actions/workflows/ci.yml/badge.svg)](https://github.com/cany7/LumiCite/actions/workflows/ci.yml)
 [![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat&logo=fastapi)](https://fastapi.tiangolo.com)
 
@@ -54,11 +54,23 @@ Interface Layer
 
 ## 评测结果
 
+评测文件及统计口径限制见[评测归档说明](evaluation/README.md)。
+
 ### 问答生成质量评测
 
-使用[示例数据](#示例数据)中的评测数据集，在默认参数设置下对系统进行了完整测试，结果见[benchmark_QA_default_query_results.csv](./tests/benchmark_QA_default_query_results.csv)
+使用[示例数据](#示例数据)中的评测数据集，在默认参数设置下对系统进行了完整测试，结果见[rag_answers.csv](evaluation/generation/rag_answers.csv)
 
 按“语义一致”口径统计，共得到 33 个正确答案，整体正确率为 82.5%。平均 retrieval latency 为 891 ms，平均 generation latency 为 1756 ms
+
+这个 82.5% 是基于 `data/benchmark_QA.csv` 中 40 道问题的问答质量统计，不是 `rag benchmark` 这个仅评估 retrieval 指标的命令自动产生的结果。生成答案记录在 `docs/evaluation/generation/rag_answers.csv` 中，33/40 来自按标准答案做语义一致性判断。
+
+如需增加一个“不使用检索上下文、直接让 generation 阶段模型回答”的 baseline，可运行：
+
+```bash
+uv run python tests/run_direct_generation_accuracy.py
+```
+
+该脚本会让 generation 模型直接回答每个 benchmark 问题，再用 LLM semantic-equivalence judge 判断是否正确，输出 `docs/evaluation/generation/direct_answers.csv`，并打印 direct-generation accuracy 与 82.5% RAG baseline 的差值。
 
 召回及生成过程中，会受到云端 LLM API 服务状态、测试平台计算性能等因素影响，因此延时结果仅供参考，不同运行环境可能存在较大差异
 
@@ -77,12 +89,10 @@ Interface Layer
 | **Recall@10**    | 0.8780                             | 0.8780                    | = 0%   |
 | **MRR**          | 0.8171                             | 0.7642                    | ▼ 6.5% |
 | **NDCG@10**      | 0.8321                             | 0.7933                    | ▼ 4.7% |
-| **Mean Latency** | 994.64 ms                          | 65.28 ms                  | ▼ 93%  |
-| **P95 Latency**  | 1667.82 ms                         | 39.07 ms                  | ▼ 97%  |
 
 **分析结论**：
 
-- **排序质量**：在此数据集上，开启 Query Explanation 后 **MRR 提升了 6.5%**。优化后的查询能更精准地命中语义核心，使最相关的证据在候选列表中排位显著靠前（通常直接升至 Top 1-2），为答案生成提供更有效、精准的证据
+- **排序质量**：在此数据集上，开启 Query Explanation 后 **MRR 提升了约 6.9%**。优化后的查询能更精准地命中语义核心，使最相关的证据在候选列表中排位显著靠前（通常直接升至 Top 1-2），为答案生成提供更有效、精准的证据
 - **响应性能**：关闭该功能直接省去了 LLM 的推理开销，将检索延迟降低了 **93%**，实现毫秒级的极速响应
 - **场景建议**：实际应用中可根据需求灵活权衡
   - 在**复杂学术问答**场景下，建议默认**开启**，利用 LLM 挖掘深层语义和隐式条件，以时间换准确率，确保最佳的回答质量
@@ -91,6 +101,8 @@ Interface Layer
 ## 环境配置&安装
 
 项目依赖与版本约束请参考 `pyproject.toml`、`uv.lock` 及相关配置文件
+
+以下命令及代码中的路径均以仓库根目录为基准。
 
 安装依赖：
 
@@ -119,13 +131,15 @@ RAG_VISUAL_API_MODEL=
 - generation 阶段默认模型为 `qwen/qwen3.5-27b`，可通过 `RAG_API_MODEL` 或 `rag query --model` 调整
 - ingest 阶段默认模型为 `qwen/qwen2.5-vl-7b-instruct`，可通过 `RAG_VISUAL_API_MODEL` 调整
 - `docker compose` 启动 `ollama` 服务时会自动拉取 `RAG_OLLAMA_MODEL` 指定的模型；CLI 在切换到 `--llm ollama` 时会等待该模型就绪后再发起请求
-- PDF解析模块由 `rag parse` 命令直接调用，默认计算设备为 `cpu`，可通过parse --device` 进行调整
+- PDF解析模块由 `rag parse` 命令直接调用，默认计算设备为 `cpu`，可通过 `rag parse --device` 进行调整
 
 ## 快速开始
 
+仓库保留论文来源清单和评测题库；PDF、模型缓存和索引需下载或重新生成。
+
 首次运行时，推荐按照以下顺序进行初始化：
 
-1. 将 PDF 文件放入 `data/pdfs/`
+1. 将 PDF 文件放入 `data/pdfs`
 2. 执行 `rag parse` 完成模型下载、ingest、embedding 与索引构建
 3. 使用 `rag search` 或 `rag query` 进行检索与问答
 
@@ -149,7 +163,7 @@ RAG_VISUAL_API_MODEL=
 - `--source`
   - 可选 `local_dir`、`url_csv`、`url_list`
 - `--path`
-  - 填写本地输入路径，如 `data/pdfs/`、`data/pdfs/papers.csv`、`data/pdfs/papers.txt`
+  - 填写本地输入路径，如 `data/pdfs`、`data/pdfs/papers.csv`、`data/pdfs/papers.txt`
 - `--device`
   - 可选 `cpu`、`cuda`、`cuda:0`、`mps`、`npu` 作为解析计算设备
 - `--llm`
@@ -159,7 +173,7 @@ RAG_VISUAL_API_MODEL=
 - `--retry-failed`
   - 仅重试此前失败的文档
 - `--dry-run`
-  - 仅输出计划，不实际执行
+  - 输出 ingest 计划，不执行解析、embedding 或索引写入；URL 输入仍可能下载 PDF
 
 示例：
 
@@ -188,7 +202,7 @@ uv run rag parse --source local_dir --path data/pdfs/
 
 ### `rag search`
 
-`rag search` 仅执行检索，不调用生成模型，适合用于查看召回结果、检查检索质量或对比不同检索策略下的命中情况；默认采用 `hybrid` 检索并输出 JSON 结果
+`rag search` 不生成最终答案；默认开启的 query explanation 仍会调用模型 API，使用 `--no-query-explanation` 可关闭。该命令适合用于查看召回结果、检查检索质量或对比不同检索策略下的命中情况；默认采用 `hybrid` 检索并输出 JSON 结果
 
 默认选项：
 
@@ -315,18 +329,18 @@ uv run rag serve --host 0.0.0.0 --port 8000
 
 默认选项：
 
-- `--dataset data/train_QA.csv`
+- `--dataset data/benchmark_QA.csv`
 - `--retrieval-mode hybrid`
 - `--top-k 10`（或 `RAG_RETRIEVAL_TOP_K`）
 - `--no-rerank`
 - `--query-explanation`
-- `--output-dir data/benchmark_results/`
+- `--output-dir docs/evaluation/retrieval/`
 - `--tag run`
 
 常用参数：
 
 - `--dataset`
-  - 填写评测数据集路径，如 `data/benchmark.csv`
+  - 填写评测数据集路径，如 `data/benchmark_QA.csv`
 - `--retrieval-mode`
   - 可选 `dense`、`sparse`、`hybrid`
 - `--top-k`
@@ -337,7 +351,7 @@ uv run rag serve --host 0.0.0.0 --port 8000
   - 可选地在每个 benchmark 问题检索前将原问题改写为面向证据召回的 expanded query；expanded query 只用于增强检索，与原 query 的候选集合并后再做 rerank，不参与答案生成
   - query explanation 的 reasoning 不走命令行参数，只通过 `.env` 中的 `RAG_QUERY_EXPLANATION_REASONING_EFFORT` 控制，默认 `none`
 - `--output-dir`
-  - 填写结果输出目录，如 `data/benchmark_results/`
+  - 填写结果输出目录，如 `docs/evaluation/retrieval`
 - `--tag`
   - 填写本次运行的标识名称，如 `smoke`
 
@@ -350,15 +364,15 @@ uv run rag serve --host 0.0.0.0 --port 8000
 示例：
 
 ```bash
-uv run rag benchmark --dataset data/benchmark_QA.csv --tag smoke
+uv run rag benchmark --dataset data/benchmark_QA.csv --tag current_run
 ```
 
-结果示例：
+归档结果示例（文件已重命名以便阅读；新运行仍生成带时间戳的文件名）：
 
 ```json
 {
-  "report": "data/benchmark_results/smoke_20260322_175009_report.json",
-  "summary": "data/benchmark_results/smoke_20260322_175009_summary.csv"
+  "report": "docs/evaluation/retrieval/query_explanation_on_report.json",
+  "summary": "docs/evaluation/retrieval/query_explanation_on_summary.csv"
 }
 ```
 
@@ -372,7 +386,7 @@ uv run rag benchmark --dataset data/benchmark_QA.csv --tag smoke
 
 ## 项目测试
 
-当前 `tests/` 目录包含 unit tests 与 integration tests，主要覆盖以下功能测试：
+当前 `tests` 目录包含 unit tests 与 integration tests，主要覆盖以下功能测试：
 
 - 检索链路：dense、sparse、hybrid 检索，RRF 融合，以及 reranker 改排逻辑
 - 问答链路：prompt 构造、生成结果归一化、引用补全、答案校验与 fallback 行为
@@ -385,17 +399,17 @@ uv run rag benchmark --dataset data/benchmark_QA.csv --tag smoke
 
 项目运行过程中会产出一组固定的关键目录与中间结果：
 
-- `data/pdfs/`：原始 PDF 文档与默认 URL 输入文件位置
+- `data/pdfs`：原始 PDF 文档与默认 URL 输入文件位置
   - `papers.csv`：URL CSV 输入文件，必需字段为 `url`
   - `papers.txt`：TXT URL list 输入文件，每行一个 URL
 - `data/intermediate/mineru/`：解析阶段的原始中间产物
-- `data/assets/`：图像与表格的 canonical 资产目录
+- `data/assets/`：图片的 canonical 资产目录；表格当前不保存图片资产
 - `data/metadata/`：canonical chunks、embeddings 与检索索引目录
 - `rag.log`：项目根目录下的统一错误日志
 
 - 本项目使用统一的 chunk schema 串联 ingest、retrieval 与 answer 阶段
   - 每条 chunk 均以 `chunk_id`、`doc_id`、`text`、`chunk_type`、`page_number`、`headings` 作为基础字段
-  - 图片和表格类 chunk 额外包含 `caption`、`footnotes`、`asset_path` 等定位与补充信息
+  - 图片和表格类 chunk 额外包含 `caption`、`footnotes`、`asset_path` 等定位与补充信息；表格的 `asset_path` 当前为空
 - 检索阶段使用统一的 `SearchResult` 组织命中结果，问答阶段使用 `Citation` 表达引用定位，并通过 `RAGAnswer` 返回最终答案与引用信息
   - 整体 schema 设计覆盖了从 chunk 归一化、embedding、索引构建，到检索返回与答案补全的完整数据链路
 

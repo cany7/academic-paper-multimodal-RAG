@@ -1,4 +1,4 @@
-[🇺🇸 English](./README.md) | [🇨🇳 简体中文](./README_ZH.md)
+[🇺🇸 English](./README.md) | [🇨🇳 简体中文](./docs/README_ZH.md)
 
 # LumiCite
 
@@ -54,11 +54,23 @@ Interface Layer
 
 ## Evaluation Results
 
+See the [evaluation archive notes](docs/evaluation/README.md) for retained results and measurement limitations.
+
 ### QA Generation Quality Evaluation
 
-The system was evaluated using the [Example Data](#example-data) benchmark dataset under default parameter settings. The results can be found in [benchmark_QA_default_query_results.csv](./tests/benchmark_QA_default_query_results.csv).
+The system was evaluated using the [Example Data](#example-data) benchmark dataset under default parameter settings. The results can be found in [rag_answers.csv](docs/evaluation/generation/rag_answers.csv).
 
 Based on a "semantic equivalence" criterion, the system achieved 33 correct answers, resulting in an overall accuracy of 82.5%. The average retrieval latency was 891 ms, and the average generation latency was 1756 ms.
+
+This 82.5% figure is a semantic-equivalence answer-quality score over the 40 questions in `data/benchmark_QA.csv`; it is not produced by the retrieval-only `rag benchmark` command. The generated answers are stored in `docs/evaluation/generation/rag_answers.csv`, and the 33/40 score comes from checking whether each answer is semantically correct against the expected answer.
+
+For a direct-generation baseline without retrieval context, run:
+
+```bash
+uv run python tests/run_direct_generation_accuracy.py
+```
+
+The script asks the generation-stage model to answer each benchmark question directly, uses an LLM semantic-equivalence judge to mark correctness, writes `docs/evaluation/generation/direct_answers.csv`, and prints the direct-generation accuracy alongside the 82.5% RAG baseline.
 
 Retrieval and generation latencies are subject to factors such as cloud LLM API service status and the computing performance of the test platform, so these results are for reference only and may vary across different environments.
 
@@ -82,7 +94,7 @@ We compared retrieval performance with Query Explanation enabled (default baseli
 
 **Analysis Conclusion**:
 
-- **Ranking Quality**: On this dataset, enabling Query Explanation improved **MRR by 6.5%**. The optimized queries more accurately hit the semantic core, pushing the most relevant evidence significantly higher in the candidate list (usually directly to Top 1-2), providing more effective and precise evidence for answer generation.
+- **Ranking Quality**: On this dataset, enabling Query Explanation improved **MRR by approximately 6.9%**. The optimized queries more accurately hit the semantic core, pushing the most relevant evidence significantly higher in the candidate list (usually directly to Top 1-2), providing more effective and precise evidence for answer generation.
 - **Response Performance**: Disabling this function eliminates the LLM inference overhead, reducing retrieval latency by **93%** and achieving millisecond-level distinct response times.
 - **Scenario Suggestions**: In practice, tradeoffs can be made flexibly based on requirements:
   - In **complex academic QA** scenarios, it is recommended to default to **enabled** to utilize the LLM to mine deep semantics and implicit conditions, trading time for accuracy to ensure the best answer quality.
@@ -91,6 +103,8 @@ We compared retrieval performance with Query Explanation enabled (default baseli
 ## Environment Configuration & Installation
 
 For project dependencies and version constraints, please refer to `pyproject.toml`, `uv.lock`, and related configuration files.
+
+Run the commands below from the repository root; code paths are relative to that directory.
 
 Install dependencies:
 
@@ -122,6 +136,8 @@ Configuration description:
 - The PDF parsing module is directly called by the `rag parse` command, with the default computing device being `cpu`, which can be adjusted via `rag parse --device`.
 
 ## Quick Start
+
+The repository retains the paper source list and benchmark questions; PDFs, model caches, and indexes must be downloaded or regenerated.
 
 For the first run, it is recommended to initialize in the following order:
 
@@ -159,7 +175,7 @@ Common parameters:
 - `--retry-failed`
   - Retry only previously failed documents
 - `--dry-run`
-  - Only output the plan, do not actually execute
+  - Output the ingest plan without parsing, embedding, or index writes; URL inputs may still download PDFs
 
 Example:
 
@@ -188,7 +204,7 @@ Result example:
 
 ### `rag search`
 
-`rag search` performs only retrieval without calling the generation model, suitable for viewing recall results, checking retrieval quality, or comparing hit situations under different retrieval strategies; it uses `hybrid` retrieval by default and outputs JSON results.
+`rag search` does not generate a final answer; query explanation calls a model API by default and can be disabled with `--no-query-explanation`. It is suitable for viewing recall results, checking retrieval quality, or comparing hit situations under different retrieval strategies; it uses `hybrid` retrieval by default and outputs JSON results.
 
 Default options:
 
@@ -315,18 +331,18 @@ Evaluation results record core metrics at the question granularity, including `r
 
 Default options:
 
-- `--dataset data/train_QA.csv`
+- `--dataset data/benchmark_QA.csv`
 - `--retrieval-mode hybrid`
 - `--top-k 10` (or `RAG_RETRIEVAL_TOP_K`)
 - `--no-rerank`
 - `--query-explanation`
-- `--output-dir data/benchmark_results/`
+- `--output-dir docs/evaluation/retrieval/`
 - `--tag run`
 
 Common parameters:
 
 - `--dataset`
-  - Fill in evaluation dataset path, such as `data/benchmark.csv`
+  - Fill in evaluation dataset path, such as `data/benchmark_QA.csv`
 - `--retrieval-mode`
   - Options: `dense`, `sparse`, `hybrid`
 - `--top-k`
@@ -337,7 +353,7 @@ Common parameters:
   - Optionally rewrite the original question into a retrieval-oriented expanded query before each benchmark question retrieval; the expanded query is only used to enhance retrieval and is merged with the original query's candidate set before rerank, and does not participate in answer generation
   - Query explanation reasoning does not use command line parameters and is only controlled by `RAG_QUERY_EXPLANATION_REASONING_EFFORT` in `.env`, default `none`
 - `--output-dir`
-  - Fill in result output directory, such as `data/benchmark_results/`
+  - Fill in result output directory, such as `docs/evaluation/retrieval/`
 - `--tag`
   - Fill in the identifier name for this run, such as `smoke`
 
@@ -350,15 +366,15 @@ Test dataset required fields:
 Example:
 
 ```bash
-uv run rag benchmark --dataset data/benchmark_QA.csv --tag smoke
+uv run rag benchmark --dataset data/benchmark_QA.csv --tag current_run
 ```
 
-Result example:
+Archived result example (files renamed for readability; new runs include a timestamp):
 
 ```json
 {
-  "report": "data/benchmark_results/smoke_20260322_175009_report.json",
-  "summary": "data/benchmark_results/smoke_20260322_175009_summary.csv"
+  "report": "docs/evaluation/retrieval/query_explanation_on_report.json",
+  "summary": "docs/evaluation/retrieval/query_explanation_on_summary.csv"
 }
 ```
 
@@ -389,13 +405,13 @@ The project generates a fixed set of key directories and intermediate results du
   - `papers.csv`: URL CSV input file (required field: `url`).
   - `papers.txt`: TXT URL list input file (one URL per line).
 - `data/intermediate/mineru/`: Raw intermediate outputs from the parsing stage.
-- `data/assets/`: Canonical asset directory for images and tables.
+- `data/assets/`: Canonical figure image directory; table images are not currently stored.
 - `data/metadata/`: Canonical directory for chunks, embeddings, and retrieval indexes.
 - `rag.log`: Unified error log located in the project root directory.
 
 - The project uses a unified chunk schema to connect the ingestion, retrieval, and answering stages.
   - Each chunk contains basic fields: `chunk_id`, `doc_id`, `text`, `chunk_type`, `page_number`, and `headings`.
-  - Image and table chunks include additional positioning and supplementary information, such as `caption`, `footnotes`, and `asset_path`.
+  - Image and table chunks include additional positioning and supplementary information, such as `caption`, `footnotes`, and `asset_path`; table chunks currently have an empty `asset_path`.
 - The retrieval stage uses a unified `SearchResult` schema to organize hits, while the Q&A stage uses `Citation` to denote references and returns the final answer with citations via `RAGAnswer`.
   - This overall schema design covers the complete data flow from chunk normalization, embedding, and index construction to retrieval and answer synthesis.
 

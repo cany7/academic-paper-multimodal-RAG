@@ -1,2 +1,0 @@
-run_id,retrieval_mode,top_k,rerank,recall_at_k,mrr,ndcg_at_k,mean_retrieval_latency_ms,p95_retrieval_latency_ms
-smoke_20260322_175009,hybrid,5,1,0.8536585365853658,0.8048780487804879,0.8176516832752642,473.53501114767136,708.9728750288486

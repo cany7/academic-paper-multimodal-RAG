@@ -1,0 +1,1449 @@
+{
+  "run_id": "current_run_20260322_233352",
+  "tag": "current_run",
+  "timestamp": "2026-03-22T23:34:32Z",
+  "config_hash": "0dfc97e55336883270d030c909b61a74",
+  "git_commit": "bb3004d379096d114e019ae0aebd8d2ee09837ea",
+  "dataset": "data/benchmark_QA.csv",
+  "retrieval_mode": "hybrid",
+  "top_k": 10,
+  "reranker_enabled": false,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "num_questions": 41,
+  "recall_at_k": 0.8780487804878049,
+  "mrr": 0.8170731707317073,
+  "ndcg_at_k": 0.832147968152462,
+  "mean_retrieval_latency_ms": 994.6352286809465,
+  "p95_retrieval_latency_ms": 1667.8180838935077,
+  "per_question": [
+    {
+      "question_id": "q01",
+      "question": "What is the name of the benchmark suite presented in a recent paper for measuring inference energy consumption?",
+      "relevant_ref_doc_ids": [
+        "2505.06371"
+      ],
+      "retrieved_doc_ids": [
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2111.00364"
+      ],
+      "retrieved_ref_ids": [
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2111.00364"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 3304.547
+    },
+    {
+      "question_id": "q02",
+      "question": "What were the net CO2e emissions from training the GShard-600B model?",
+      "relevant_ref_doc_ids": [
+        "2104.10350"
+      ],
+      "retrieved_doc_ids": [
+        "2104.10350",
+        "2206.05229",
+        "2206.05229",
+        "2104.10350",
+        "2206.05229",
+        "2104.10350",
+        "2302.08476",
+        "2104.10350",
+        "2302.08476",
+        "2206.05229"
+      ],
+      "retrieved_ref_ids": [
+        "2104.10350",
+        "2206.05229",
+        "2206.05229",
+        "2104.10350",
+        "2206.05229",
+        "2104.10350",
+        "2302.08476",
+        "2104.10350",
+        "2302.08476",
+        "2206.05229"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 740.939
+    },
+    {
+      "question_id": "q03",
+      "question": "What is the model size in gigabytes (GB) for the LLaMA-33B model?",
+      "relevant_ref_doc_ids": [
+        "2405.01814"
+      ],
+      "retrieved_doc_ids": [
+        "2405.01814",
+        "2310.03003",
+        "2310.03003",
+        "2405.01814",
+        "2405.01814",
+        "2504.11816",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814"
+      ],
+      "retrieved_ref_ids": [
+        "2405.01814",
+        "2310.03003",
+        "2310.03003",
+        "2405.01814",
+        "2405.01814",
+        "2504.11816",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 820.921
+    },
+    {
+      "question_id": "q04",
+      "question": "What was the total electricity consumption of all Google Cloud TPU pods worldwide in 2023, in megawatt-hours?",
+      "relevant_ref_doc_ids": [
+        "nan"
+      ],
+      "retrieved_doc_ids": [
+        "2311.16863",
+        "2104.10350",
+        "2104.10350",
+        "2412.06288",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2405.01814"
+      ],
+      "retrieved_ref_ids": [
+        "2311.16863",
+        "2104.10350",
+        "2104.10350",
+        "2412.06288",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2405.01814"
+      ],
+      "recall_at_k": 0.0,
+      "mrr": 0.0,
+      "ndcg_at_k": 0.0,
+      "retrieval_latency_ms": 796.854
+    },
+    {
+      "question_id": "q05",
+      "question": "True or False: Hyperscale data centers in 2020 achieved more than 40% higher efficiency compared to traditional data centers.",
+      "relevant_ref_doc_ids": [
+        "2108.06738;2104.10350"
+      ],
+      "retrieved_doc_ids": [
+        "2108.06738",
+        "2108.06738",
+        "2501.16548",
+        "2104.10350",
+        "2304.03271",
+        "2108.06738",
+        "2108.06738",
+        "2111.00364",
+        "2111.00364",
+        "2104.10350"
+      ],
+      "retrieved_ref_ids": [
+        "2108.06738",
+        "2108.06738",
+        "2501.16548",
+        "2104.10350",
+        "2304.03271",
+        "2108.06738",
+        "2108.06738",
+        "2111.00364",
+        "2111.00364",
+        "2104.10350"
+      ],
+      "recall_at_k": 0.0,
+      "mrr": 0.0,
+      "ndcg_at_k": 0.0,
+      "retrieval_latency_ms": 927.986
+    },
+    {
+      "question_id": "q06",
+      "question": "For every medium-length GPT-3 completion (prompt= 800 words; response 150 - 300 words), roughly how many 500 mL bottles of water does the model 'drink'?",
+      "relevant_ref_doc_ids": [
+        "2304.03271"
+      ],
+      "retrieved_doc_ids": [
+        "2304.03271",
+        "2304.03271",
+        "2505.09598",
+        "2304.03271",
+        "2505.09598",
+        "2304.03271",
+        "2310.03003",
+        "2505.09598",
+        "2505.09598",
+        "2508.14170"
+      ],
+      "retrieved_ref_ids": [
+        "2304.03271",
+        "2304.03271",
+        "2505.09598",
+        "2304.03271",
+        "2505.09598",
+        "2304.03271",
+        "2310.03003",
+        "2505.09598",
+        "2505.09598",
+        "2508.14170"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 1039.842
+    },
+    {
+      "question_id": "q07",
+      "question": "From a sample of 60 papers from top AI conferences, what is the difference between the percentage of CVPR papers that target accuracy and the percentage of CVPR papers that target efficiency?",
+      "relevant_ref_doc_ids": [
+        "1907.10597"
+      ],
+      "retrieved_doc_ids": [
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "2302.08476",
+        "2104.10350",
+        "2104.10350",
+        "2508.14170",
+        "2504.00797"
+      ],
+      "retrieved_ref_ids": [
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "2302.08476",
+        "2104.10350",
+        "2104.10350",
+        "2508.14170",
+        "2504.00797"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 976.556
+    },
+    {
+      "question_id": "q08",
+      "question": "True or False: The AI Act makes energy consumption data from providers publicly available to NGOs, analysts, and the general public.",
+      "relevant_ref_doc_ids": [
+        "2410.06681"
+      ],
+      "retrieved_doc_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2506.15572",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2506.15572"
+      ],
+      "retrieved_ref_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2506.15572",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2506.15572"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 3021.25
+    },
+    {
+      "question_id": "q09",
+      "question": "What is the projected maximum batch size (in samples) for fine-tuning a Mixtral model with a projected GPU capacity of 100?",
+      "relevant_ref_doc_ids": [
+        "2408.04693"
+      ],
+      "retrieved_doc_ids": [
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693"
+      ],
+      "retrieved_ref_ids": [
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693",
+        "2408.04693"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 748.835
+    },
+    {
+      "question_id": "q10",
+      "question": "What was the approximate speedup in inference throughput for LLaMA-7B when using NVIDIA A100 GPUs compared to V100 GPUs?",
+      "relevant_ref_doc_ids": [
+        "2310.03003"
+      ],
+      "retrieved_doc_ids": [
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2501.05899",
+        "2310.03003",
+        "2504.17674",
+        "2310.03003"
+      ],
+      "retrieved_ref_ids": [
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2501.05899",
+        "2310.03003",
+        "2504.17674",
+        "2310.03003"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 1124.409
+    },
+    {
+      "question_id": "q11",
+      "question": "What is the estimated total operational water consumption for training GPT-3 in Microsoft's U.S. data centers, in million liters?",
+      "relevant_ref_doc_ids": [
+        "2304.03271"
+      ],
+      "retrieved_doc_ids": [
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2501.16548",
+        "2304.03271",
+        "2501.16548",
+        "2505.09598",
+        "2304.03271"
+      ],
+      "retrieved_ref_ids": [
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2501.16548",
+        "2304.03271",
+        "2501.16548",
+        "2505.09598",
+        "2304.03271"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 894.842
+    },
+    {
+      "question_id": "q12",
+      "question": "True or False: The authors propose that sustainability impact assessments (SIAs) should apply not just to high-risk AI but across all AI systems.",
+      "relevant_ref_doc_ids": [
+        "2410.06681"
+      ],
+      "retrieved_doc_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2206.05229",
+        "2504.00797",
+        "2504.00797",
+        "2504.00797",
+        "2410.06681"
+      ],
+      "retrieved_ref_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2206.05229",
+        "2504.00797",
+        "2504.00797",
+        "2504.00797",
+        "2410.06681"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 1055.618
+    },
+    {
+      "question_id": "q13",
+      "question": "True or False: Local inference was emphasized as a sustainability measure because it reduces both network overhead and carbon footprint when deploying large language models.",
+      "relevant_ref_doc_ids": [
+        "2504.06307"
+      ],
+      "retrieved_doc_ids": [
+        "2504.06307",
+        "2504.06307",
+        "2508.14170",
+        "2503.05804",
+        "2304.03271",
+        "2504.06307",
+        "2504.17674",
+        "2104.10350",
+        "2302.08476",
+        "2505.09598"
+      ],
+      "retrieved_ref_ids": [
+        "2504.06307",
+        "2504.06307",
+        "2508.14170",
+        "2503.05804",
+        "2304.03271",
+        "2504.06307",
+        "2504.17674",
+        "2104.10350",
+        "2302.08476",
+        "2505.09598"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 779.896
+    },
+    {
+      "question_id": "q14",
+      "question": "True or False: Tracking the runtime of a training job is an important step for estimating compute cost in GPU-based or cloud environments.",
+      "relevant_ref_doc_ids": [
+        "1906.02243"
+      ],
+      "retrieved_doc_ids": [
+        "1906.02243",
+        "2405.21015",
+        "2504.11816",
+        "2408.04693",
+        "2405.21015",
+        "2405.21015",
+        "2405.21015",
+        "2405.21015",
+        "2405.21015",
+        "2504.11816"
+      ],
+      "retrieved_ref_ids": [
+        "1906.02243",
+        "2405.21015",
+        "2504.11816",
+        "2408.04693",
+        "2405.21015",
+        "2405.21015",
+        "2405.21015",
+        "2405.21015",
+        "2405.21015",
+        "2504.11816"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 811.782
+    },
+    {
+      "question_id": "q15",
+      "question": "For the LLaMA-65B model, what was the maximum performance improvement (latency reduction) achieved by enabling the automated resource utilization overlapping feature in the 2025 Chen et al. study?",
+      "relevant_ref_doc_ids": [
+        "2405.01814"
+      ],
+      "retrieved_doc_ids": [
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2310.03003",
+        "2310.03003",
+        "2504.17674",
+        "2310.03003"
+      ],
+      "retrieved_ref_ids": [
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2405.01814",
+        "2310.03003",
+        "2310.03003",
+        "2504.17674",
+        "2310.03003"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 912.885
+    },
+    {
+      "question_id": "q16",
+      "question": "Who is Charli XCX?",
+      "relevant_ref_doc_ids": [
+        "nan"
+      ],
+      "retrieved_doc_ids": [
+        "2211.06318",
+        "2211.06318",
+        "2412.06288",
+        "2306.03163",
+        "2211.06318",
+        "2211.06318",
+        "2211.06318",
+        "2211.06318",
+        "2412.06288",
+        "2211.06318"
+      ],
+      "retrieved_ref_ids": [
+        "2211.06318",
+        "2211.06318",
+        "2412.06288",
+        "2306.03163",
+        "2211.06318",
+        "2211.06318",
+        "2211.06318",
+        "2211.06318",
+        "2412.06288",
+        "2211.06318"
+      ],
+      "recall_at_k": 0.0,
+      "mrr": 0.0,
+      "ndcg_at_k": 0.0,
+      "retrieval_latency_ms": 735.156
+    },
+    {
+      "question_id": "q17",
+      "question": "Which of the following five large NLP DNNs has the highest energy consumption: Meena, T5, GPT-3, GShard-600B, or Switch Transformer?",
+      "relevant_ref_doc_ids": [
+        "2104.10350"
+      ],
+      "retrieved_doc_ids": [
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2111.00364",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2504.17674"
+      ],
+      "retrieved_ref_ids": [
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2111.00364",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2504.17674"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 1212.676
+    },
+    {
+      "question_id": "q18",
+      "question": "How many days of CO_ emissions from an average American life are equivalent to training BERT base?",
+      "relevant_ref_doc_ids": [
+        "1906.02243"
+      ],
+      "retrieved_doc_ids": [
+        "2206.05229",
+        "2206.05229",
+        "2206.05229",
+        "2206.05229",
+        "2206.05229",
+        "1906.02243",
+        "2206.05229",
+        "2206.05229",
+        "2302.08476",
+        "1906.02243"
+      ],
+      "retrieved_ref_ids": [
+        "2206.05229",
+        "2206.05229",
+        "2206.05229",
+        "2206.05229",
+        "2206.05229",
+        "1906.02243",
+        "2206.05229",
+        "2206.05229",
+        "2302.08476",
+        "1906.02243"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 0.5,
+      "ndcg_at_k": 0.6309297535714575,
+      "retrieval_latency_ms": 779.022
+    },
+    {
+      "question_id": "q19",
+      "question": "True or False: The Transformer architecture eventuallly outperforms the Evolved Transformers architecture on the WMT'24 EN-DE BLUE task as the model sizes grow.",
+      "relevant_ref_doc_ids": [
+        "2104.10350"
+      ],
+      "retrieved_doc_ids": [
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "1906.02243",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350"
+      ],
+      "retrieved_ref_ids": [
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350",
+        "1906.02243",
+        "2104.10350",
+        "2104.10350",
+        "2104.10350"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 840.032
+    },
+    {
+      "question_id": "q20",
+      "question": "What dataset of 5,842 labeled entries was used to test energy-efficient large language models in the financial domain?",
+      "relevant_ref_doc_ids": [
+        "2504.06307"
+      ],
+      "retrieved_doc_ids": [
+        "2508.14170",
+        "2508.14170",
+        "2504.06307",
+        "2504.06307",
+        "2505.06371",
+        "2310.03003",
+        "2508.14170",
+        "2508.14170",
+        "2111.00364",
+        "2504.17674"
+      ],
+      "retrieved_ref_ids": [
+        "2508.14170",
+        "2508.14170",
+        "2504.06307",
+        "2504.06307",
+        "2505.06371",
+        "2310.03003",
+        "2508.14170",
+        "2508.14170",
+        "2111.00364",
+        "2504.17674"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 0.5,
+      "ndcg_at_k": 0.6309297535714575,
+      "retrieval_latency_ms": 895.353
+    },
+    {
+      "question_id": "q21",
+      "question": "True or False: Eight T4 spot instances could be more cost-efficient than a DGX-2 node for distributed training.",
+      "relevant_ref_doc_ids": [
+        "2306.03163"
+      ],
+      "retrieved_doc_ids": [
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163"
+      ],
+      "retrieved_ref_ids": [
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 974.472
+    },
+    {
+      "question_id": "q22",
+      "question": "True or False: The 2023 US Executive Order regarding AI mentioned the greenhouse gas emissions or energy usage of AI.",
+      "relevant_ref_doc_ids": [
+        "2504.00797"
+      ],
+      "retrieved_doc_ids": [
+        "2504.00797",
+        "2410.06681",
+        "2410.06681",
+        "2501.16548",
+        "2504.00797",
+        "2506.15572",
+        "2505.09598",
+        "2501.16548",
+        "2206.05229",
+        "2302.08476"
+      ],
+      "retrieved_ref_ids": [
+        "2504.00797",
+        "2410.06681",
+        "2410.06681",
+        "2501.16548",
+        "2504.00797",
+        "2506.15572",
+        "2505.09598",
+        "2501.16548",
+        "2206.05229",
+        "2302.08476"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 712.87
+    },
+    {
+      "question_id": "q23",
+      "question": "True or False: Under Germany's 2023 Energy Efficiency Act, data centers must run on 100% renewable energy by January 1, 2027.",
+      "relevant_ref_doc_ids": [
+        "2410.06681"
+      ],
+      "retrieved_doc_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2108.06738",
+        "2410.06681",
+        "2412.06288"
+      ],
+      "retrieved_ref_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2108.06738",
+        "2410.06681",
+        "2412.06288"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 827.337
+    },
+    {
+      "question_id": "q24",
+      "question": "Out of a sample of 60 papers from top AI conferences, how many papers from ACL targeted both accuracy and efficiency?",
+      "relevant_ref_doc_ids": [
+        "1907.10597"
+      ],
+      "retrieved_doc_ids": [
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "2302.08476",
+        "1907.10597",
+        "2302.08476",
+        "2504.00797",
+        "2111.00364",
+        "2503.05804"
+      ],
+      "retrieved_ref_ids": [
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "1907.10597",
+        "2302.08476",
+        "1907.10597",
+        "2302.08476",
+        "2504.00797",
+        "2111.00364",
+        "2503.05804"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 792.684
+    },
+    {
+      "question_id": "q25",
+      "question": "According to recent estimates, what percentage of a model's total lifecycle energy use can inference account for?",
+      "relevant_ref_doc_ids": [
+        "2505.09598"
+      ],
+      "retrieved_doc_ids": [
+        "2505.09598",
+        "2311.16863",
+        "2405.21015",
+        "2311.16863",
+        "2311.16863",
+        "2405.21015",
+        "2311.16863",
+        "2412.06288",
+        "2206.05229",
+        "2410.06681"
+      ],
+      "retrieved_ref_ids": [
+        "2505.09598",
+        "2311.16863",
+        "2405.21015",
+        "2311.16863",
+        "2311.16863",
+        "2405.21015",
+        "2311.16863",
+        "2412.06288",
+        "2206.05229",
+        "2410.06681"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 864.55
+    },
+    {
+      "question_id": "q26",
+      "question": "True or False: The AI Act requires providers to report both training and inference energy consumption for general-purpose AI models.",
+      "relevant_ref_doc_ids": [
+        "2410.06681"
+      ],
+      "retrieved_doc_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2311.16863",
+        "2311.16863",
+        "2410.06681",
+        "2505.06371",
+        "2410.06681"
+      ],
+      "retrieved_ref_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2311.16863",
+        "2311.16863",
+        "2410.06681",
+        "2505.06371",
+        "2410.06681"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 923.303
+    },
+    {
+      "question_id": "q27",
+      "question": "True or False: The AI Act currently requires providers to report energy use during the inference phase of AI models.",
+      "relevant_ref_doc_ids": [
+        "2410.06681"
+      ],
+      "retrieved_doc_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2506.15572",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681"
+      ],
+      "retrieved_ref_ids": [
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681",
+        "2506.15572",
+        "2410.06681",
+        "2410.06681",
+        "2410.06681"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 752.189
+    },
+    {
+      "question_id": "q28",
+      "question": "True or False: New AI data centers often rely on air cooling due to high server power densities.",
+      "relevant_ref_doc_ids": [
+        "2304.03271"
+      ],
+      "retrieved_doc_ids": [
+        "2304.03271",
+        "2410.06681",
+        "2304.03271",
+        "2108.06738",
+        "2410.06681",
+        "2304.03271",
+        "2501.16548",
+        "2412.06288",
+        "2108.06738",
+        "2405.21015"
+      ],
+      "retrieved_ref_ids": [
+        "2304.03271",
+        "2410.06681",
+        "2304.03271",
+        "2108.06738",
+        "2410.06681",
+        "2304.03271",
+        "2501.16548",
+        "2412.06288",
+        "2108.06738",
+        "2405.21015"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 661.383
+    },
+    {
+      "question_id": "q29",
+      "question": "By what factor did platform-level caching improve the power efficiency of the inference workload for the cross-lingual Transformer language model described in Wu et al. (2021)?",
+      "relevant_ref_doc_ids": [
+        "2111.00364"
+      ],
+      "retrieved_doc_ids": [
+        "2111.00364",
+        "2111.00364",
+        "2508.14170",
+        "2111.00364",
+        "2504.11816",
+        "2104.10350",
+        "2104.10350",
+        "2505.09598",
+        "2405.01814",
+        "2104.10350"
+      ],
+      "retrieved_ref_ids": [
+        "2111.00364",
+        "2111.00364",
+        "2508.14170",
+        "2111.00364",
+        "2504.11816",
+        "2104.10350",
+        "2104.10350",
+        "2505.09598",
+        "2405.01814",
+        "2104.10350"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 1667.818
+    },
+    {
+      "question_id": "q30",
+      "question": "What is the estimated CO2 emissions in pounds from training a BERT base model for 79 hours using  64 V100 GPUs?",
+      "relevant_ref_doc_ids": [
+        "1906.02243"
+      ],
+      "retrieved_doc_ids": [
+        "2206.05229",
+        "2501.05899",
+        "2206.05229",
+        "2206.05229",
+        "2206.05229",
+        "1906.02243",
+        "2206.05229",
+        "1906.02243",
+        "2206.05229",
+        "2505.09598"
+      ],
+      "retrieved_ref_ids": [
+        "2206.05229",
+        "2501.05899",
+        "2206.05229",
+        "2206.05229",
+        "2206.05229",
+        "1906.02243",
+        "2206.05229",
+        "1906.02243",
+        "2206.05229",
+        "2505.09598"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 0.3333333333333333,
+      "ndcg_at_k": 0.5,
+      "retrieval_latency_ms": 772.506
+    },
+    {
+      "question_id": "q31",
+      "question": "According to a recent paper, what percentage of total compute demand does ML inference reportedly account for?",
+      "relevant_ref_doc_ids": [
+        "2505.06371"
+      ],
+      "retrieved_doc_ids": [
+        "2505.06371",
+        "2504.17674",
+        "2311.16863",
+        "2104.10350",
+        "2311.16863",
+        "2311.16863",
+        "2412.06288",
+        "2405.21015",
+        "2302.08476",
+        "2302.08476"
+      ],
+      "retrieved_ref_ids": [
+        "2505.06371",
+        "2504.17674",
+        "2311.16863",
+        "2104.10350",
+        "2311.16863",
+        "2311.16863",
+        "2412.06288",
+        "2405.21015",
+        "2302.08476",
+        "2302.08476"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 715.995
+    },
+    {
+      "question_id": "q32",
+      "question": "How many U.S. household-years of electricity consumption is training a 6.1B-parameter language model equivalent to?",
+      "relevant_ref_doc_ids": [
+        "2206.05229;1906.02243"
+      ],
+      "retrieved_doc_ids": [
+        "2503.05804",
+        "2503.05804",
+        "2503.05804",
+        "2503.05804",
+        "2412.06288",
+        "2104.10350",
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2505.09598"
+      ],
+      "retrieved_ref_ids": [
+        "2503.05804",
+        "2503.05804",
+        "2503.05804",
+        "2503.05804",
+        "2412.06288",
+        "2104.10350",
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2505.09598"
+      ],
+      "recall_at_k": 0.0,
+      "mrr": 0.0,
+      "ndcg_at_k": 0.0,
+      "retrieval_latency_ms": 900.758
+    },
+    {
+      "question_id": "q33",
+      "question": "True or False: Egress costs in geo-distributed NLP experiments could account for more than 90% of the total cost per VM.",
+      "relevant_ref_doc_ids": [
+        "2306.03163"
+      ],
+      "retrieved_doc_ids": [
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2504.17674",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2104.10350",
+        "2306.03163",
+        "2508.14170"
+      ],
+      "retrieved_ref_ids": [
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2504.17674",
+        "2306.03163",
+        "2306.03163",
+        "2306.03163",
+        "2104.10350",
+        "2306.03163",
+        "2508.14170"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 809.385
+    },
+    {
+      "question_id": "q34",
+      "question": "Given the total pre-training GPU hours and the number of GPUs used, estimate the total wall-clock time in days required to pre-train the JetMoE-8B model.",
+      "relevant_ref_doc_ids": [
+        "2404.07413"
+      ],
+      "retrieved_doc_ids": [
+        "2302.08476",
+        "2302.08476",
+        "2206.05229",
+        "1906.02243",
+        "2405.21015",
+        "2302.08476",
+        "2104.10350",
+        "1906.02243",
+        "2404.07413",
+        "2111.00364"
+      ],
+      "retrieved_ref_ids": [
+        "2302.08476",
+        "2302.08476",
+        "2206.05229",
+        "1906.02243",
+        "2405.21015",
+        "2302.08476",
+        "2104.10350",
+        "1906.02243",
+        "2404.07413",
+        "2111.00364"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 0.16666666666666666,
+      "ndcg_at_k": 0.3562071871080222,
+      "retrieval_latency_ms": 1096.174
+    },
+    {
+      "question_id": "q35",
+      "question": "What is the term for the amount of water evaporated, transpired, or incorporated into products, and is defined as 'water withdrawal minus water discharge'?",
+      "relevant_ref_doc_ids": [
+        "2304.03271"
+      ],
+      "retrieved_doc_ids": [
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2505.09598",
+        "2304.03271",
+        "2503.05804",
+        "2304.03271",
+        "2304.03271"
+      ],
+      "retrieved_ref_ids": [
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2304.03271",
+        "2505.09598",
+        "2304.03271",
+        "2503.05804",
+        "2304.03271",
+        "2304.03271"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 865.618
+    },
+    {
+      "question_id": "q36",
+      "question": "What was the observed range of inference energy per second for LLaMA-65B across GPU shard configurations?",
+      "relevant_ref_doc_ids": [
+        "2310.03003"
+      ],
+      "retrieved_doc_ids": [
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003"
+      ],
+      "retrieved_ref_ids": [
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003",
+        "2310.03003"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 826.87
+    },
+    {
+      "question_id": "q37",
+      "question": "When comparing small and large versions of Qwen models in zero-shot classification, how many times more energy did the 72B version consume than the 7B version?",
+      "relevant_ref_doc_ids": [
+        "2508.14170"
+      ],
+      "retrieved_doc_ids": [
+        "2508.14170",
+        "2501.05899",
+        "2501.05899",
+        "2508.14170",
+        "2508.14170",
+        "2311.16863",
+        "2503.05804",
+        "2311.16863",
+        "2505.09598",
+        "2501.05899"
+      ],
+      "retrieved_ref_ids": [
+        "2508.14170",
+        "2501.05899",
+        "2501.05899",
+        "2508.14170",
+        "2508.14170",
+        "2311.16863",
+        "2503.05804",
+        "2311.16863",
+        "2505.09598",
+        "2501.05899"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 882.304
+    },
+    {
+      "question_id": "q38",
+      "question": "By what percentage did Qwen's carbon emissions fall when applying quantization and local inference for sentiment classification?",
+      "relevant_ref_doc_ids": [
+        "2504.06307"
+      ],
+      "retrieved_doc_ids": [
+        "2504.06307",
+        "2504.06307",
+        "2311.16863",
+        "2504.06307",
+        "2504.06307",
+        "2508.14170",
+        "2504.06307",
+        "2504.06307",
+        "2206.05229",
+        "2504.06307"
+      ],
+      "retrieved_ref_ids": [
+        "2504.06307",
+        "2504.06307",
+        "2311.16863",
+        "2504.06307",
+        "2504.06307",
+        "2508.14170",
+        "2504.06307",
+        "2504.06307",
+        "2206.05229",
+        "2504.06307"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 821.681
+    },
+    {
+      "question_id": "q39",
+      "question": "How many widely used model architectures across different tasks were included in the latest iteration of the ML.ENERGY Benchmark?",
+      "relevant_ref_doc_ids": [
+        "2505.06371"
+      ],
+      "retrieved_doc_ids": [
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371"
+      ],
+      "retrieved_ref_ids": [
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371",
+        "2505.06371"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 774.412
+    },
+    {
+      "question_id": "q40",
+      "question": "In the analysis of training a Llama-3.1 scale model, what was the estimated health cost, In USD, when training in Altoona, Iowa?",
+      "relevant_ref_doc_ids": [
+        "2412.06288"
+      ],
+      "retrieved_doc_ids": [
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2405.21015",
+        "2405.21015",
+        "2405.21015",
+        "2104.10350"
+      ],
+      "retrieved_ref_ids": [
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2412.06288",
+        "2405.21015",
+        "2405.21015",
+        "2405.21015",
+        "2104.10350"
+      ],
+      "recall_at_k": 1.0,
+      "mrr": 1.0,
+      "ndcg_at_k": 1.0,
+      "retrieval_latency_ms": 794.477
+    },
+    {
+      "question_id": "nan",
+      "question": "nan",
+      "relevant_ref_doc_ids": [
+        "nan"
+      ],
+      "retrieved_doc_ids": [
+        "2503.05804",
+        "2108.06738",
+        "2405.21015",
+        "2501.16548",
+        "2108.06738",
+        "2404.07413",
+        "2408.04693"
+      ],
+      "retrieved_ref_ids": [
+        "2503.05804",
+        "2108.06738",
+        "2405.21015",
+        "2501.16548",
+        "2108.06738",
+        "2404.07413",
+        "2408.04693"
+      ],
+      "recall_at_k": 0.0,
+      "mrr": 0.0,
+      "ndcg_at_k": 0.0,
+      "retrieval_latency_ms": 923.858
+    }
+  ]
+}
